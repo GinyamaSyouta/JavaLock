@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!--ここからヘッダー（これがコメント）-->
+<head>
+    <meta charset="UTF-8">
+    <title>サンプルページ(RSAによる暗号化済)</title>
+<!--ここまでヘッダー-->
+</head>
+<body>
+  <h1 id="h1_1">HTMLを暗号化して送信してみよう</h1>
+
+  <style>
+    #h1_1 {
+      color: red;
+      background-color: lime;
+    }
+  </style>
+
+  <p>練習として簡単なレポート文書を
+  暗号化・解読してみましょう。</p>
+  <h2>暗号化のコツ</h2>
+  <ol>
+    <li>焦らない。ゆっくり１つずつ。</li>
+    <li>まめに保存。確認。</li>
+    <li>素数へをこよなく愛する。</li>
+    <li>地道な作業を嫌がらない。</li>
+    <li>楽しみながら取り組む</li>
+  </ol>
+
+  <h1 id="unlocked"></h1>
+
+  <style>
+    #unlocked {
+      color: red;
+      font-size: 1300%;
+      text-align: center;
+    }
+  </style>
+
+  <script>
+    var unlocked = document.getElementById("unlocked");
+    var link = window.location.href.split('/').pop();
+    link = decodeURI(link);
+    var timer;
+    var count = 1;
+
+    function unlockedFunction() {
+
+      switch(count) {
+        case 1: unlocked.innerHTML = "復&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"; break;
+        case 2: unlocked.innerHTML = "復 号&nbsp;&nbsp;&nbsp;&nbsp;"; break;
+        case 3: unlocked.innerHTML = "復 号 済"; break;
+        case 4: clearTimeout(timer);
+      }
+      if (count < 4) {
+        count++;
+        setTimeout("unlockedFunction()", 300);
+      }
+
+    }
+
+    if (link == "(復号済)(暗号化済)test1.html") {
+      setTimeout("unlockedFunction()", 700);
+    }
+  </script>
+</body>
+</html>
